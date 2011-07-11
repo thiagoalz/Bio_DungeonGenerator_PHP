@@ -183,4 +183,28 @@ class DrunkManTest extends PHPUnit_Framework_TestCase {
 
 		printMap($map);
 	}
+
+	public function testCompleteDrunkWalk(){
+		$maps=$this->getmaps();
+
+		$walkMap=drunkMan($maps[0],100);//enough to use all spaces (so statistics says)
+		$checkMap=array(
+		array("*","*","*","*"));
+		$this->assertEquals($checkMap,$walkMap);
+
+		$walkMap=drunkMan($maps[1],100);//enough to use all spaces (so statistics says)
+		$checkMap=array(
+		array("*"),
+		array("*"),
+		array("*"),
+		array("*"),
+		array("*"));
+		$this->assertEquals($checkMap,$walkMap);
+
+		$walkMap=drunkMan($maps[2],100);//enough to use all spaces (so statistics says)
+		$checkMap=array(
+		array("*","*"),
+		array("*","*"));
+		$this->assertEquals($checkMap,$walkMap);
+	}
 }

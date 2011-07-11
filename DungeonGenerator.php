@@ -45,7 +45,6 @@ function pickNextPoint($myMap, $xPoint,$yPoint) {
 		}
 	}
 
-	
 	return array($xPoint+$xChange,$yPoint+$yChange);
 }
 
