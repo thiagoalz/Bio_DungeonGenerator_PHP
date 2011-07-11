@@ -166,8 +166,10 @@ class DrunkManTest extends PHPUnit_Framework_TestCase {
 
 
 		//Verify distance
-		$this->assertTrue( ($xPoint-$next[0]) <=1 ); //0 or 1
-		$this->assertTrue( ($yPoint-$next[1]) <=1 ); //0 or 1
+		$this->assertTrue( abs($xPoint-$next[0]) <=1 ); //0 or 1
+		$this->assertTrue( abs($yPoint-$next[1]) <=1 ); //0 or 1
+		
+
 	}
 
 	/**
