@@ -7,6 +7,11 @@ require_once 'DungeonGenerator.php';
  */
 class DrunkManTest extends PHPUnit_Framework_TestCase {
 
+	/**
+	 * Provides some maps used to generate data to the tests.
+	 * Not used as a phpUnit dataProvider.
+	 *
+     */
 	public function getmaps(){
 		//Some maps to test
 		$map0=array(
@@ -45,6 +50,10 @@ class DrunkManTest extends PHPUnit_Framework_TestCase {
 		return array($map0, $map1, $map2, $map3, $map4, $map5);
 	}
 
+	/**
+	 * Provides data to the Start Point test
+	 *
+     */
 	public function mapsProvider(){
 
 		$maps=$this->getmaps();
@@ -62,6 +71,10 @@ class DrunkManTest extends PHPUnit_Framework_TestCase {
 
 	}
 
+	/**
+	 * Provides data to the next point check test
+	 *
+     */
 	public function nextPointProvider(){
 
 		$maps=$this->getmaps();
@@ -100,7 +113,10 @@ class DrunkManTest extends PHPUnit_Framework_TestCase {
 
 	}
 
-
+	/**
+	 * Provides data to the walk test
+	 *
+     */
 	public function walkProvider(){
 
 		$maps=$this->getmaps();
@@ -140,6 +156,7 @@ class DrunkManTest extends PHPUnit_Framework_TestCase {
 
 
 	/**
+	 * Testing if the start point is valid
 	 * 
      * @dataProvider mapsProvider
      */
@@ -148,6 +165,7 @@ class DrunkManTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
+	 * Testing the next point generation algorithm
 	 *
      * @dataProvider nextPointProvider
      */
@@ -175,6 +193,7 @@ class DrunkManTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
+	 * For now, just printing some walked maps
 	 *
      * @dataProvider walkProvider
      */
@@ -184,6 +203,10 @@ class DrunkManTest extends PHPUnit_Framework_TestCase {
 		printMap($map);
 	}
 
+	/**
+	 * Test to ensure that the whole map can be used
+     * 
+     */
 	public function testCompleteDrunkWalk(){
 		$maps=$this->getmaps();
 
