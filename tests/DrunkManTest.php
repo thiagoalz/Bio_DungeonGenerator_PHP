@@ -125,12 +125,12 @@ class DrunkManTest extends PHPUnit_Framework_TestCase {
           array($maps[3], 30),
           array($maps[3], rand(1,30)), //A random test :P
 
-          array($maps[4], 0),
+          array($maps[4], 1),
           array($maps[4], 5),
           array($maps[4], 20),
           array($maps[4], rand(1,20)), //A random test :P
 
-          array($maps[5], 0),
+          array($maps[5], 1),
           array($maps[5], 5),
           array($maps[5], 20),
           array($maps[5], rand(0,20)) //A random test :P
@@ -169,7 +169,9 @@ class DrunkManTest extends PHPUnit_Framework_TestCase {
 		$this->assertTrue( abs($xPoint-$next[0]) <=1 ); //0 or 1
 		$this->assertTrue( abs($yPoint-$next[1]) <=1 ); //0 or 1
 		
-
+		//No diagonal
+		//Cannot change line AND column at the same time
+		$this->assertTrue( abs($xPoint-$next[0]) + abs($yPoint-$next[1]) <=1 ); //0 or 1
 	}
 
 	/**

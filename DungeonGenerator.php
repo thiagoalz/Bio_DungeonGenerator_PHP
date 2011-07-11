@@ -26,15 +26,27 @@ function pickNextPoint($myMap, $xPoint,$yPoint) {
 	$lines=sizeof($myMap);
 	$columns=sizeof($myMap[0]);
 	
-	$minX= ($xPoint-1) > 0? ($xPoint-1) : 0;
-	$maxX= ($xPoint+1) < ($lines-1)? ($xPoint+1) : ($lines-1);
-	$xPoint=rand($minX,$maxX);
+	$minX= ($xPoint-1) >= 0? -1 : 0; //If in the corner, Cannot walk to a negative position
+	$maxX= ($xPoint+1) < $lines ? 1 : 0; //If in the corner, Cannot walk to a out of bounds position
+	$xChange=rand($minX,$maxX); //secure rand(-1,1);
 
-	$minY= ($yPoint-1) > 0? ($yPoint-1) : 0;
-	$maxY= ($yPoint+1) < ($columns-1)? ($yPoint+1) : ($columns-1);
-	$yPoint=rand($minY,$maxY);
+	$minY= ($yPoint-1) >= 0? -1 : 0; //If in the corner, Cannot walk to a negative position
+	$maxY= ($yPoint+1) < $columns? 1 : 0; //If in the corner, Cannot walk to a out of bounds position
+	$yChange=rand($minY,$maxY); //secure rand(-1,1);
 
-	return array($xPoint,$yPoint);
+	//Cannot walk diagonal.
+	if ( (abs($xChange) + abs($yChange)) >1 ){//if both directions are changing
+		//choose one to reset
+		$reset=rand(0,1);
+		if($reset==0){
+			$xChange=0;
+		}else{
+			$yChange=0;
+		}
+	}
+
+	
+	return array($xPoint+$xChange,$yPoint+$yChange);
 }
 
 function drunkMan($myMap ,$stepNumber){
