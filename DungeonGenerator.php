@@ -25,7 +25,8 @@ function pickStartPoint($myMap) {
 function pickNextPoint($myMap, $xPoint,$yPoint) {
 	$lines=sizeof($myMap);
 	$columns=sizeof($myMap[0]);
-	
+
+	//Maybe, if just radom from 0-4 to decide here to move could be simpler.	
 	$minX= ($xPoint-1) >= 0? -1 : 0; //If in the corner, Cannot walk to a negative position
 	$maxX= ($xPoint+1) < $lines ? 1 : 0; //If in the corner, Cannot walk to a out of bounds position
 	$xChange=rand($minX,$maxX); //secure rand(-1,1);

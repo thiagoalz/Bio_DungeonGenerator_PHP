@@ -78,9 +78,9 @@ class DrunkManTest extends PHPUnit_Framework_TestCase {
 	public function nextPointProvider(){
 
 		$maps=$this->getmaps();
-
-
+	
 		//Creating struture of a dataprovider return
+		//Map, ActualLine, AcualColumn
 		return array(
           array($maps[0], 0, 0),
 		  array($maps[0], 0, 1),
@@ -123,6 +123,7 @@ class DrunkManTest extends PHPUnit_Framework_TestCase {
 
 
 		//Creating struture of a dataprovider return
+		//Map, Steps
 		return array(
           array($maps[0], 1),
 		  array($maps[0], 3),
