@@ -1,11 +1,20 @@
 <?php
-require_once 'DungeonGenerator.php';
+require_once 'DungeonGenerator.class.php';
+require_once 'DrunkManStrategy.class.php';
 
 /**
  * Testing the DrunkMan algorithm
  * 
  */
 class DrunkManTest extends PHPUnit_Framework_TestCase {
+
+	protected $drunkMan;
+	protected $mapGen;
+ 
+	protected function setUp(){
+		$this->drunkMan = new DrunkManStrategy();
+		$this->mapGen = new DungeonGenerator($this->drunkMan);
+	}
 
 	/**
 	 * Provides some maps used to generate data to the tests.
@@ -162,7 +171,7 @@ class DrunkManTest extends PHPUnit_Framework_TestCase {
      * @dataProvider mapsProvider
      */
 	public function testPickStartPoint($map){
-		$this->assertEquals(array(0,0), pickStartPoint($map));
+		$this->assertEquals(array(0,0), $this->drunkMan->pickStartPoint($map));
 	}
 
 	/**
@@ -174,7 +183,7 @@ class DrunkManTest extends PHPUnit_Framework_TestCase {
 		$lines=sizeof($myMap);
 		$columns=sizeof($myMap[0]);
 
-		$next=pickNextPoint($myMap, $xPoint,$yPoint);
+		$next=$this->drunkMan->pickNextPoint($myMap, $xPoint,$yPoint);
 		//verify line range
 		$this->assertTrue($next[0]>=0);
 		$this->assertTrue($next[0]<=$lines-1);
@@ -199,9 +208,9 @@ class DrunkManTest extends PHPUnit_Framework_TestCase {
      * @dataProvider walkProvider
      */
 	public function testDrunkManWalk($myMap, $steps){
-		$map=drunkMan($myMap,$steps);
+		$map=$this->mapGen->walk($myMap,$steps);
 
-		printMap($map);
+		//printMap($map);
 	}
 
 	/**
@@ -211,12 +220,12 @@ class DrunkManTest extends PHPUnit_Framework_TestCase {
 	public function testCompleteDrunkWalk(){
 		$maps=$this->getmaps();
 
-		$walkMap=drunkMan($maps[0],100);//enough to use all spaces (so statistics says)
+		$walkMap=$this->mapGen->walk($maps[0],100);//enough to use all spaces (so statistics says)
 		$checkMap=array(
 		array("*","*","*","*"));
 		$this->assertEquals($checkMap,$walkMap);
 
-		$walkMap=drunkMan($maps[1],100);//enough to use all spaces (so statistics says)
+		$walkMap=$this->mapGen->walk($maps[1],100);//enough to use all spaces (so statistics says)
 		$checkMap=array(
 		array("*"),
 		array("*"),
@@ -225,7 +234,7 @@ class DrunkManTest extends PHPUnit_Framework_TestCase {
 		array("*"));
 		$this->assertEquals($checkMap,$walkMap);
 
-		$walkMap=drunkMan($maps[2],100);//enough to use all spaces (so statistics says)
+		$walkMap=$this->mapGen->walk($maps[2],100);//enough to use all spaces (so statistics says)
 		$checkMap=array(
 		array("*","*"),
 		array("*","*"));
