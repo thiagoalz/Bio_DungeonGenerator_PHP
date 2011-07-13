@@ -143,7 +143,7 @@ class DrunkManTest extends MapTest {
 
 	/**
 	 * Test to ensure that the whole map can be used
-     * 
+     * I'm Not happy with this test. Need a better way to test that the algorithm can use the whole map.
      */
 	public function testCompleteDrunkWalk(){
 		$maps=$this->getmaps();

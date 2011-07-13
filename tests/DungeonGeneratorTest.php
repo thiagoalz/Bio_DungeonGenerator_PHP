@@ -89,6 +89,8 @@ class MapCriationTest extends MapTest {
      * @dataProvider mapsProvider
      */
 	public function testPickStartPoint($map){
+
+		//TODO: Test if it is a valid start point (only borders)
 		$this->assertEquals(array(0,0), $this->mapGen->pickStartPoint($map));
 	}
 }
