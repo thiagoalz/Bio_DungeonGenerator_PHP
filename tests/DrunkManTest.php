@@ -1,12 +1,13 @@
 <?php
 require_once 'DungeonGenerator.class.php';
 require_once 'DrunkManStrategy.class.php';
+require_once 'MapTest.php';
 
 /**
  * Testing the DrunkMan algorithm
  * 
  */
-class DrunkManTest extends PHPUnit_Framework_TestCase {
+class DrunkManTest extends MapTest {
 
 	protected $drunkMan;
 	protected $mapGen;
@@ -16,48 +17,6 @@ class DrunkManTest extends PHPUnit_Framework_TestCase {
 		$this->mapGen = new DungeonGenerator($this->drunkMan);
 	}
 
-	/**
-	 * Provides some maps used to generate data to the tests.
-	 * Not used as a phpUnit dataProvider.
-	 *
-     */
-	public function getmaps(){
-		//Some maps to test
-		$map0=array(
-		array("#","#","#","#"));
-
-		$map1=array(
-		array("#"),
-		array("#"),
-		array("#"),
-		array("#"),
-		array("#"));
-
-		$map2=array(
-		array("#","#"),
-		array("#","#"));
-
-		$map3=array(
-		array("#","#","#","#","#"),
-		array("#","#","#","#","#"),
-		array("#","#","#","#","#"),
-		array("#","#","#","#","#"),
-		array("#","#","#","#","#"));
-
-		$map4=array(
-		array("#","#","#"),
-		array("#","#","#"),
-		array("#","#","#"),
-		array("#","#","#"),
-		array("#","#","#"));
-
-		$map5=array(
-		array("#","#","#","#","#"),
-		array("#","#","#","#","#"),
-		array("#","#","#","#","#"));
-
-		return array($map0, $map1, $map2, $map3, $map4, $map5);
-	}
 
 	/**
 	 * Provides data to the next point check test

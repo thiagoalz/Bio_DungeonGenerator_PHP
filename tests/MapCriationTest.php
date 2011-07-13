@@ -1,59 +1,17 @@
 <?php
 require_once 'DungeonGenerator.class.php';
+require_once 'MapTest.php';
 
 /**
  * Testing generation of clean maps
  * 
  */
-class MapCriationTest extends PHPUnit_Framework_TestCase {
+class MapCriationTest extends MapTest {
 
 	protected $mapGen;
  
 	protected function setUp(){
 		$this->mapGen = new DungeonGenerator();
-	}
-
-	/**
-	 * Provides some maps used to generate data to the tests.
-	 * Not used as a phpUnit dataProvider.
-	 *
-     */
-	public function getmaps(){
-		//Some maps to test
-		$map0=array(
-		array("#","#","#","#"));
-
-		$map1=array(
-		array("#"),
-		array("#"),
-		array("#"),
-		array("#"),
-		array("#"));
-
-		$map2=array(
-		array("#","#"),
-		array("#","#"));
-
-		$map3=array(
-		array("#","#","#","#","#"),
-		array("#","#","#","#","#"),
-		array("#","#","#","#","#"),
-		array("#","#","#","#","#"),
-		array("#","#","#","#","#"));
-
-		$map4=array(
-		array("#","#","#"),
-		array("#","#","#"),
-		array("#","#","#"),
-		array("#","#","#"),
-		array("#","#","#"));
-
-		$map5=array(
-		array("#","#","#","#","#"),
-		array("#","#","#","#","#"),
-		array("#","#","#","#","#"));
-
-		return array($map0, $map1, $map2, $map3, $map4, $map5);
 	}
 
 	/**
