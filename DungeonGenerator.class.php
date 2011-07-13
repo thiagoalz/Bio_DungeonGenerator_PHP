@@ -23,8 +23,20 @@ class DungeonGenerator{
 		return $myMap;
 	}
 
+	public function pickStartPoint($myMap) {
+		$lines=sizeof($myMap);
+		$columns=sizeof($myMap[0]);
+
+	
+		//sortear um ponto de entrada
+		//Tem que ser 0 ou max na linha ou na coluna
+
+		return array(0,0);
+	}
+
 	public function walk($myMap ,$stepNumber){
-		return $this->myWalkStrategy->walk($myMap ,$stepNumber);
+		$startPoint= $this->pickStartPoint($myMap);
+		return $this->myWalkStrategy->walk($myMap ,$stepNumber, $startPoint[0], $startPoint[1]);
 	}
 
 	public function printMap($map){

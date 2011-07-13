@@ -60,27 +60,6 @@ class DrunkManTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Provides data to the Start Point test
-	 *
-     */
-	public function mapsProvider(){
-
-		$maps=$this->getmaps();
-
-
-		//Creating struture of a dataprovider return
-		return array(
-          array($maps[0]),
-          array($maps[1]),
-          array($maps[2]),
-          array($maps[3]),
-          array($maps[4]),
-          array($maps[5])
-        );
-
-	}
-
-	/**
 	 * Provides data to the next point check test
 	 *
      */
@@ -162,16 +141,6 @@ class DrunkManTest extends PHPUnit_Framework_TestCase {
           array($maps[5], rand(0,20)) //A random test :P
         );
 
-	}
-
-
-	/**
-	 * Testing if the start point is valid
-	 * 
-     * @dataProvider mapsProvider
-     */
-	public function testPickStartPoint($map){
-		$this->assertEquals(array(0,0), $this->drunkMan->pickStartPoint($map));
 	}
 
 	/**
