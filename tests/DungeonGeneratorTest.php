@@ -35,7 +35,7 @@ class MapCriationTest extends MapTest {
 
 	}
 
-	public function testSimpleMap(){
+	public function testSimpleMapCreation(){
 		$map=$this->mapGen->createMap(0,0);	
 		$this->assertEmpty($map);
 
@@ -43,7 +43,7 @@ class MapCriationTest extends MapTest {
 		$this->assertEquals(array(array("#")),$map);
 	}
 	
-	public function testLineMap(){
+	public function testLineMapCreation(){
 		$maps=$this->getmaps();
 		$myMap=$maps[0]; //1x4
 
@@ -51,7 +51,7 @@ class MapCriationTest extends MapTest {
 		$this->assertEquals($myMap,$generatedMap);
 	}
 
-	public function testColumnMap(){
+	public function testColumnMapCreation(){
 		$maps=$this->getmaps();
 		$myMap=$maps[1]; //5x1
 
@@ -59,7 +59,7 @@ class MapCriationTest extends MapTest {
 		$this->assertEquals($myMap,$generatedMap);
 	}
 
-	public function testSquareMap(){
+	public function testSquareMapCreation(){
 		$maps=$this->getmaps(); //2x2
 
 		$myMap=$maps[2];
@@ -71,7 +71,7 @@ class MapCriationTest extends MapTest {
 		$this->assertEquals($myMap,$generatedMap);
 	}
 
-	public function testRectangleMap(){
+	public function testRectangleMapCreation(){
 		$maps=$this->getmaps();
 		$myMap=$maps[4]; //5x3
 

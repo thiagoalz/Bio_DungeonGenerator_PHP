@@ -1,6 +1,6 @@
 <?php
 
-class MapTest extends PHPUnit_Framework_TestCase {
+abstract class MapTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Provides some maps used to generate data to the tests.
@@ -43,5 +43,12 @@ class MapTest extends PHPUnit_Framework_TestCase {
 		array("#","#","#","#","#"));
 
 		return array($map0, $map1, $map2, $map3, $map4, $map5);
+	}
+
+	protected function getUnaccessibleMethod($className, $methodName) {
+	  $class = new ReflectionClass($className);
+	  $method = $class->getMethod($methodName);
+	  $method->setAccessible(true);
+	  return $method;
 	}
 }

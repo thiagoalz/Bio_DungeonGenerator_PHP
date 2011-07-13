@@ -4,7 +4,7 @@ require_once 'GenericStrategy.class.php';
 
 class DrunkManStrategy extends GenericStrategy implements WalkStrategy{
 
-	public function pickNextPoint($myMap, $linePoint,$columnPoint) {
+	protected function pickNextPoint($myMap, $linePoint,$columnPoint) {
 		$linesSize=sizeof($myMap);
 		$columnsSize=sizeof($myMap[0]);
 

@@ -111,7 +111,10 @@ class DrunkManTest extends MapTest {
 		$lines=sizeof($myMap);
 		$columns=sizeof($myMap[0]);
 
-		$next=$this->drunkMan->pickNextPoint($myMap, $xPoint,$yPoint);
+		//invoking protected method
+		$pickNextPointMethod = $this->getUnaccessibleMethod("DrunkManStrategy", "pickNextPoint");
+		$next=$pickNextPointMethod->invokeArgs($this->drunkMan, array($myMap, $xPoint,$yPoint));
+
 		//verify line range
 		$this->assertTrue($next[0]>=0);
 		$this->assertTrue($next[0]<=$lines-1);
