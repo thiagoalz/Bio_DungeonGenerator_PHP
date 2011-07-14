@@ -24,14 +24,11 @@ class DungeonGenerator{
 	}
 
 	public function pickStartPoint($myMap) {
+		//Todo: test it
 		$lines=sizeof($myMap);
 		$columns=sizeof($myMap[0]);
 
-	
-		//sortear um ponto de entrada
-		//Tem que ser 0 ou max na linha ou na coluna
-
-		return array(0,0);
+		return array(rand(0,$lines-1),rand(0,$columns-1));
 	}
 
 	public function walk($myMap ,$stepNumber){
