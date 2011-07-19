@@ -27,24 +27,24 @@ class WormStrategy extends GenericStrategy implements WalkStrategy{
 		switch ($direction) {
 			case 0:
 			case "N":
-				return $this->walkNorth(&$myMap ,$stepNumber, $startLine, $startColumn, $direction);
+				return $this->walkNorth(&$myMap ,$stepNumber, $startLine, $startColumn);
 				break;
 			case 1:
 			case "S":
-				return $this->walkSouth(&$myMap ,$stepNumber, $startLine, $startColumn, $direction);
+				return $this->walkSouth(&$myMap ,$stepNumber, $startLine, $startColumn);
 				break;
 			case 2:
 			case "W":
-				return $this->walkWest(&$myMap ,$stepNumber, $startLine, $startColumn, $direction);
+				return $this->walkWest(&$myMap ,$stepNumber, $startLine, $startColumn);
 				break;
 			case 3:
 			case "E":
-				return $this->walkEast(&$myMap ,$stepNumber, $startLine, $startColumn, $direction);
+				return $this->walkEast(&$myMap ,$stepNumber, $startLine, $startColumn);
 				break;
 		}
 	}
 
-	private function walkNorth($myMap ,$stepNumber, $startLine, $startColumn, $direction){
+	private function walkNorth($myMap ,$stepNumber, $startLine, $startColumn){
 		$step=0;
 		$myMap=$this->visit($myMap, $startLine,$startColumn);
 		while ($step < $stepNumber && $startLine>0){
@@ -56,11 +56,11 @@ class WormStrategy extends GenericStrategy implements WalkStrategy{
 		return array($startLine,$startColumn);
 	}
 
-	private function walkSouth($myMap ,$stepNumber, $startLine, $startColumn, $direction){
+	private function walkSouth($myMap ,$stepNumber, $startLine, $startColumn){
 		$linesSize=sizeof($myMap);
 		$step=0;
 		$myMap=$this->visit($myMap, $startLine,$startColumn);
-		while ($step < $stepNumber && $startLine < $linesSize){
+		while ($step < $stepNumber && $startLine < ($linesSize-1)){
 			$startLine++;
 			$step++;
 			$myMap=$this->visit($myMap, $startLine,$startColumn);
@@ -68,7 +68,7 @@ class WormStrategy extends GenericStrategy implements WalkStrategy{
 		return array($startLine,$startColumn);
 	}
 
-	private function walkWest($myMap ,$stepNumber, $startLine, $startColumn, $direction){
+	private function walkWest($myMap ,$stepNumber, $startLine, $startColumn){
 		$step=0;
 		$myMap=$this->visit($myMap, $startLine,$startColumn);
 		while ($step < $stepNumber && $startColumn>0){
@@ -79,11 +79,11 @@ class WormStrategy extends GenericStrategy implements WalkStrategy{
 		return array($startLine,$startColumn);
 	}
 
-	private function walkEast($myMap ,$stepNumber, $startLine, $startColumn, $direction){
+	private function walkEast($myMap ,$stepNumber, $startLine, $startColumn){
 		$columnsSize=sizeof($myMap[0]);
 		$step=0;
 		$myMap=$this->visit($myMap, $startLine,$startColumn);
-		while ($step < $stepNumber && $startColumn < $columnsSize){
+		while ($step < $stepNumber && $startColumn < ($columnsSize -1)){
 			$startColumn++;
 			$step++;
 			$myMap=$this->visit($myMap, $startLine,$startColumn);
