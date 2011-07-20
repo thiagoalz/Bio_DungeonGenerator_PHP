@@ -24,7 +24,6 @@ class DungeonGenerator{
 	}
 
 	public function pickStartPoint($myMap) {
-		//Todo: test it
 		$lines=sizeof($myMap);
 		$columns=sizeof($myMap[0]);
 
