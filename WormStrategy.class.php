@@ -3,7 +3,12 @@ require_once 'WalkStrategy.class.php';
 require_once 'GenericStrategy.class.php';
 
 class WormStrategy extends GenericStrategy implements WalkStrategy{
+	
+	private $maxLength;
 
+	function __construct($maxLength){
+		$this->maxLength=$maxLength;
+	}
 
 	public function walk($myMap ,$stepNumber, $startLine=0, $startColumn=0){
 		$steps=0;
@@ -11,9 +16,10 @@ class WormStrategy extends GenericStrategy implements WalkStrategy{
 			$myMap=$this->visit($myMap, $startLine,$startColumn);
 
 			$direcao = rand(0,3);
-
-			$steps+=10; //TODO: Mudar numero fixo de passos por linha
-			$nextPoint = $this->walkLine(&$myMap, 10 ,$startLine,$startColumn, $direcao);
+			
+			$lineLength=rand(1,$this->maxLength);
+			$steps+=$lineLength;
+			$nextPoint = $this->walkLine(&$myMap, $lineLength ,$startLine,$startColumn, $direcao);
 
 			$startLine = $nextPoint[0];
 			$startColumn = $nextPoint[1];

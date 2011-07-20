@@ -17,7 +17,7 @@ $mapGen->printMap($map);
 
 echo "\n\n====================\nWorm";
 
-$mapGen = new DungeonGenerator(new WormStrategy());
+$mapGen = new DungeonGenerator(new WormStrategy(5));
 $map = $mapGen->createMap(30,30);
 $map=$mapGen->walk($map,500);
 $mapGen->printMap($map);
