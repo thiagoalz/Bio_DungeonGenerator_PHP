@@ -134,14 +134,14 @@ class DrunkManTest extends MapTest {
 	}
 
 	/**
-	 * For now, just printing some walked maps
+	 * For now, just running it
 	 *
      * @dataProvider walkProvider
      */
 	public function testDrunkManWalk($myMap, $steps){
 		$map=$this->mapGen->walk($myMap,$steps);
 
-		//printMap($map);
+		//$this->mapGen->printMap($map);
 	}
 
 	/**
