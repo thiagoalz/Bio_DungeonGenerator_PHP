@@ -8,23 +8,23 @@ require_once 'MapTest.php';
  */
 class MapCriationTest extends MapTest {
 
-	protected $mapGen;
+    protected $mapGen;
  
-	protected function setUp(){
-		$this->mapGen = new DungeonGenerator();
-	}
+    protected function setUp(){
+        $this->mapGen = new DungeonGenerator();
+    }
 
-	/**
-	 * Provides data to the Start Point test
-	 *
+    /**
+     * Provides data to the Start Point test
+     *
      */
-	public function mapsProvider(){
+    public function mapsProvider(){
 
-		$maps=$this->getmaps();
+        $maps=$this->getmaps();
 
 
-		//Creating struture of a dataprovider return
-		return array(
+        //Creating struture of a dataprovider return
+        return array(
           array($maps[0]), //1x4
           array($maps[1]), //5x1
           array($maps[2]), //2x2
@@ -33,67 +33,67 @@ class MapCriationTest extends MapTest {
           array($maps[5])  //3x5
         );
 
-	}
+    }
 
-	public function testSimpleMapCreation(){
-		$map=$this->mapGen->createMap(0,0);	
-		$this->assertEmpty($map);
+    public function testSimpleMapCreation(){
+        $map=$this->mapGen->createMap(0,0);    
+        $this->assertEmpty($map);
 
-		$map=$this->mapGen->createMap(1,1);	
-		$this->assertEquals(array(array("#")),$map);
-	}
-	
-	public function testLineMapCreation(){
-		$maps=$this->getmaps();
-		$myMap=$maps[0]; //1x4
+        $map=$this->mapGen->createMap(1,1);    
+        $this->assertEquals(array(array("#")),$map);
+    }
+    
+    public function testLineMapCreation(){
+        $maps=$this->getmaps();
+        $myMap=$maps[0]; //1x4
 
-		$generatedMap=$this->mapGen->createMap(1,4);
-		$this->assertEquals($myMap,$generatedMap);
-	}
+        $generatedMap=$this->mapGen->createMap(1,4);
+        $this->assertEquals($myMap,$generatedMap);
+    }
 
-	public function testColumnMapCreation(){
-		$maps=$this->getmaps();
-		$myMap=$maps[1]; //5x1
+    public function testColumnMapCreation(){
+        $maps=$this->getmaps();
+        $myMap=$maps[1]; //5x1
 
-		$generatedMap=$this->mapGen->createMap(5,1);
-		$this->assertEquals($myMap,$generatedMap);
-	}
+        $generatedMap=$this->mapGen->createMap(5,1);
+        $this->assertEquals($myMap,$generatedMap);
+    }
 
-	public function testSquareMapCreation(){
-		$maps=$this->getmaps(); //2x2
+    public function testSquareMapCreation(){
+        $maps=$this->getmaps(); //2x2
 
-		$myMap=$maps[2];
-		$generatedMap=$this->mapGen->createMap(2,2);
-		$this->assertEquals($myMap,$generatedMap);
+        $myMap=$maps[2];
+        $generatedMap=$this->mapGen->createMap(2,2);
+        $this->assertEquals($myMap,$generatedMap);
 
-		$myMap=$maps[3]; //5x5
-		$generatedMap=$this->mapGen->createMap(5,5);
-		$this->assertEquals($myMap,$generatedMap);
-	}
+        $myMap=$maps[3]; //5x5
+        $generatedMap=$this->mapGen->createMap(5,5);
+        $this->assertEquals($myMap,$generatedMap);
+    }
 
-	public function testRectangleMapCreation(){
-		$maps=$this->getmaps();
-		$myMap=$maps[4]; //5x3
+    public function testRectangleMapCreation(){
+        $maps=$this->getmaps();
+        $myMap=$maps[4]; //5x3
 
-		$generatedMap=$this->mapGen->createMap(5,3);
-		$this->assertEquals($myMap,$generatedMap);
+        $generatedMap=$this->mapGen->createMap(5,3);
+        $this->assertEquals($myMap,$generatedMap);
 
-		$myMap=$maps[5]; //3x5
-		$generatedMap=$this->mapGen->createMap(3,5);
-		$this->assertEquals($myMap,$generatedMap);
-	}
+        $myMap=$maps[5]; //3x5
+        $generatedMap=$this->mapGen->createMap(3,5);
+        $this->assertEquals($myMap,$generatedMap);
+    }
 
-	/**
-	 * Testing if the start point is valid
-	 * 
+    /**
+     * Testing if the start point is valid
+     * 
      * @dataProvider mapsProvider
      */
-	public function testPickStartPoint($map){
-		$linesSize=sizeof($map);
-		$columnsSize=sizeof($map[0]);
+    public function testPickStartPoint($map){
+        $linesSize=sizeof($map);
+        $columnsSize=sizeof($map[0]);
 
-		$point = $this->mapGen->pickStartPoint($map);
-		$this->assertTrue($point[0] >= 0 && $point[0] < $linesSize);
-		$this->assertTrue($point[1] >= 0 && $point[1] < $columnsSize);
-	}
+        $point = $this->mapGen->pickStartPoint($map);
+        $this->assertTrue($point[0] >= 0 && $point[0] < $linesSize);
+        $this->assertTrue($point[1] >= 0 && $point[1] < $columnsSize);
+    }
 }
